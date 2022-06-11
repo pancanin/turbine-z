@@ -1,11 +1,29 @@
-// turbine-z.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
+#include "Window.h"
 
 int main()
 {
+    glfwInit();
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    Window window;
+    int opCode = window.init(800, 600, "Hiiii OpenGL!");
+
+    if (opCode == -1) {
+        std::cerr << "Failed to load window\n" << std::flush;
+        glfwTerminate();
+        return -1;
+    }
+
     std::cout << "Hello World!\n";
+
+    while (true) {}
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
